@@ -1,0 +1,21 @@
+name: Releases
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Send Slack notification
+        uses: Ilshidur/action-slack@2.0.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_AVATAR: "https://avatars3.githubusercontent.com/u/8659759?s=200&v=4"
+        with:
+          args: "@cbetta/actions-test pushed a new release"
