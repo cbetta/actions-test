@@ -11,6 +11,14 @@ jobs:
     timeout-minutes: 3
 
     steps:
+      - name: Notify changelog of new release
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          repository: box/box-developer-changelog
+          event-type: release/cbetta/actions-test
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
       - name: Send Slack notification
         uses: Ilshidur/action-slack@2.0.2
         env:
