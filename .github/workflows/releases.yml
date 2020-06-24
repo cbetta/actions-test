@@ -11,6 +11,9 @@ jobs:
     timeout-minutes: 3
 
     steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
       - name: Notify changelog of new release
         uses: peter-evans/repository-dispatch@v1
         with:
