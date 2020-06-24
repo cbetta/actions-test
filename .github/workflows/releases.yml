@@ -17,15 +17,7 @@ jobs:
           token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           repository: box/box-developer-changelog
           event-type: release
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-
-      - name: Notify other repositories of update
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          repository: box/box-postman
-          event-type: openapi-update
-          client-payload: '{}'
+          client-payload: '{"ref": "${{ github.ref }}", "repo": "cbetta/actions-test"}'
 
       - name: Send Slack notification
         uses: Ilshidur/action-slack@2.0.2
