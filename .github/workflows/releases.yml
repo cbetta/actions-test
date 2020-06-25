@@ -16,5 +16,5 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           repository: box/box-developer-changelog
-          event-type: release
+          event-type: new-release-note
           client-payload: '{"ref": "${{ github.ref }}", "repository": "${{github.repository}}", "tags": "test,actions", "template": "Test `%s` released"}'
