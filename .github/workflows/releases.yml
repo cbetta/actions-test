@@ -17,7 +17,8 @@ jobs:
           token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           repository: box/box-developer-changelog
           event-type: release
-          client-payload: '{"ref": "${{ github.ref }}", "repository": "${{github.repository}}", "tags": "test,actions"}'
+          client-payload: '{"ref": "${{ github.ref }}", "repository":
+          "${{github.repository}}", "tags": "test,actions", "template": "Box Node SDK %s released"}'
 
       - name: Send Slack notification
         uses: Ilshidur/action-slack@2.0.2
